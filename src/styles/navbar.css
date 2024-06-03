@@ -1,0 +1,19 @@
+#navbar {
+    background: linear-gradient(to bottom, #CCB9FF, #F7F2FF);
+}
+
+#navbar-item {
+    text-decoration: none;
+    color: #000526;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+#navbar-item:hover {
+    background-color: #6347FA;
+    background-size: 200% 200%;
+    border-radius: 5px;
+    color: #F7F2FF;
+}
+

@@ -14,8 +14,13 @@ function Home() {
         visible: { x: 0, opacity: 1, transition: { delay: 0.5, duration: 0.5 } }
     };
 
+    const descriptionVariants = {
+        hidden: { y: -100, opacity: 0 },
+        visible: { y: 0, opacity: 1, transition: { delay: 1.0, duration: 0.5 } },
+    };
+
     return (
-        <>
+        <div className="home">
             <Row>
                 <NavbarMenu />
             </Row>
@@ -26,31 +31,26 @@ function Home() {
                 className="p-5"
             >
                 <Row>
-                    <Col md={6} lg={6} sm={12}>
+                    <Col md={12} lg={12} sm={12} className="p-5">
                         <motion.h3
                             className="title"
                             variants={itemVariants}
                         >
-                            Hi Welcome To My Website
+                            Hi I Am Muh Fariza
                         </motion.h3>
                         <motion.p
                             className="description"
                             variants={itemVariants}
                         >
+                            I'm a <motion.b 
+                            className="description-b" 
+                            variants={descriptionVariants}
+                            ></motion.b>
                         </motion.p>
-                    </Col>
-                    <Col md={6} lg={6} sm={12}>
-                        <div className="image">
-                            <motion.img
-                                src={require("../assets/my-photo.png")}
-                                alt="MyPhoto"
-                                variants={itemVariants}
-                            />
-                        </div>
                     </Col>
                 </Row>
             </motion.div>
-        </>
+        </div>
     );
 }
 
