@@ -6,13 +6,13 @@ import { routes } from './routes';
 function App() {
   return (
     <Router>
-      <>
+      <div style={{ overflow: "hidden"}}>
         <Routes>
           {routes.map((route, index) => (
             <Route key={index} path={route.path} element={route.component} />
           ))}
         </Routes>
-      </>
+      </div>
     </Router>
   );
 }

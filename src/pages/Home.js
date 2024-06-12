@@ -2,22 +2,12 @@ import { Col, Row } from "reactstrap";
 import NavbarMenu from "../component/Navbar";
 import "../styles/home.css";
 import { motion } from "framer-motion";
+import { containerVariants, descriptionVariants, itemVariants } from "../styles/HomeStyle";
+import { socialMedia } from "../component/SocialMedia";
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 function Home() {
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: { opacity: 1, transition: { delay: 0.5, duration: 0.5 } }
-    };
 
-    const itemVariants = {
-        hidden: { x: -100, opacity: 0 },
-        visible: { x: 0, opacity: 1, transition: { delay: 0.5, duration: 0.5 } }
-    };
-
-    const descriptionVariants = {
-        hidden: { y: -100, opacity: 0 },
-        visible: { y: 0, opacity: 1, transition: { delay: 1.0, duration: 0.5 } },
-    };
 
     return (
         <div className="home">
@@ -42,13 +32,30 @@ function Home() {
                             className="description"
                             variants={itemVariants}
                         >
-                            I'm a <motion.b 
-                            className="description-b" 
-                            variants={descriptionVariants}
+                            I'm a <motion.b
+                                className="description-b"
+                                variants={descriptionVariants}
                             ></motion.b>
                         </motion.p>
                     </Col>
+                    {/* <Col sm={12} md={12} lg={6} className="image p-5">
+                        <img src={require('../assets/my-photo.png')} alt=""></img>
+                    </Col> */}
                 </Row>
+                <div className="d-flex align-items-center justify-content-center mt-3">
+                <Row className="w-50">
+                    {socialMedia.map((items, index) => {
+                        return (
+                        <Col key={index} className="d-flex align-items-center justify-content-center">
+                            <div key={index} className="social-media">
+                                <i className={items.icon} style={{color:"white", fontSize: "2rem"}}></i>
+                                {/* <strong>{items.title}</strong> */}
+                            </div>
+                        </Col>
+                        )
+                    })}
+                </Row>
+                </div>
             </motion.div>
         </div>
     );
