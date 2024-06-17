@@ -1,14 +1,9 @@
-import Home from "./pages/Home";
-import Works from "./pages/Works";
+import Portofolio from "./pages/Portofolio";
 
 export const routes = [
     {
         path: '/',
-        component: <Home />,
-    },
-    {
-        path: '/works',
-        component: <Works />,
+        component: <Portofolio />,
     }
 ]
 
