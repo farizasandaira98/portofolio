@@ -2,13 +2,13 @@ import { Col, Row } from "reactstrap";
 import NavbarMenu from "../component/Navbar";
 import "../styles/home.css";
 import { motion } from "framer-motion";
-import { containerVariants, descriptionVariants, itemVariants } from "../styles/HomeStyle";
+import { containerVariants, descriptionVariants, imageVariants, itemVariants } from "../styles/HomeStyle";
 import { socialMedia } from "../component/SocialMedia";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
 function Home() {
     return (
-        <div className="home">
+        <>
             <Row>
                 <NavbarMenu />
             </Row>
@@ -37,7 +37,7 @@ function Home() {
                                 ></motion.b>
                             </motion.p>
                         </Row>
-                        <div className="d-flex align-items-center justify-content-center mt-3">
+                        <motion.div variants={itemVariants} className="d-flex align-items-center justify-content-center mt-3">
                             <Row className="w-100">
                                 {socialMedia.map((items, index) => {
                                     return (
@@ -51,14 +51,14 @@ function Home() {
                                     )
                                 })}
                             </Row>
-                        </div>
+                        </motion.div>
                     </Col>
                     <Col sm={12} md={6} lg={6} className="image p-5">
-                        <img src={require('../assets/my-photo.png')} alt=""></img>
+                        <motion.img variants={imageVariants} src={require('../assets/my-photo.png')} alt=""></motion.img>
                     </Col>
                 </Row>
             </motion.div>
-        </div>
+            </>
     );
 }
 

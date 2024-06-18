@@ -6,7 +6,7 @@ import { routes } from './routes';
 function App() {
   return (
     <Router>
-      <div style={{ overflow: "hidden", backgroundColor:"#F7F2FF"}}>
+      <div style={{ overflowX: "hidden", backgroundColor:"#F7F2FF"}}>
         <Routes>
           {routes.map((route, index) => (
             <Route key={index} path={route.path} element={route.component} />
