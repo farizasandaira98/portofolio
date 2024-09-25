@@ -5,6 +5,9 @@ import { socmed } from "../libs/socmed";
 import { IRepo } from "../models/Repos";
 import axios from "axios";
 import animateGo from "../assets/lottie/go.json";
+import animatePlanet from "../assets/lottie/planet.json";
+import animateEducation from "../assets/lottie/user-interface.json";
+import animationWork from "../assets/lottie/working-chart.json"
 
 const Home = () => {
     // Toggle between dark and light mode
@@ -42,98 +45,19 @@ const Home = () => {
         fetchRepos();
     }, []);
 
-    if (loading) return <p>Loading...</p>;
+    if (loading) return (
+        <div className="flex justify-center items-center p-20">
+            <Player
+                src={animatePlanet}
+                loop
+                autoplay
+                style={{ height: '500px', width: '500px' }}
+            />
+        </div>
+    )
 
     return (
         <>
-            {/* Home
-            <button className="btn btn-primary" onClick={toggleDarkMode}>Toggle Dark Mode</button>
-            <button className="btn btn-success" onClick={toggleLanguage}>Toggle Language</button> */}
-            {/* <div className="flex flex-row justify-between items-center pt-8 pl-10 pr-10">
-                <button className="btn btn-primary" onClick={toggleDarkMode}>Toggle Dark Mode</button>
-                <button className="btn btn-success" onClick={toggleLanguage}>Toggle Language</button>
-            </div>
-            <div className="grid lg:grid-cols-2 grid-cols-1 gap-6 p-10">
-                
-                <div className="flex flex-col gap-6">
-                    <div className="flex flex-col items-center">
-                        <img src="/profile.jpg" alt="Profile Image" className="rounded-full" width={200} height={200}/>
-                    </div>
-                    <h3 className="text-2xl font-bold mt-10 text-center">Check My Social Media</h3>
-                    <div className="flex flex-row gap-10 justify-center mt-5">
-                        <Player
-                            loop={false}
-                            hover={true}
-                            autoplay={true}
-                            src={animationFacebook}
-                            keepLastFrame={true}
-                            style={{ width: 150, height: 150 }}
-                        />
-                    </div>
-                    <div className="flex flex-col gap-4 mt-10">
-                        <div className="flex flex-col gap-2">
-                            <h3 className="text-2xl font-bold">Pendidikan</h3>
-                            <p className="font-bold">Sarjana (S1) Teknik Informatika</p>
-                            <p>STMIK Akakom Yogyakarta (Universitas Teknologi Digital Indonesia)</p>
-                            <p>2017 - 2020</p>
-                        </div>
-                        <div className="flex flex-col gap-2">
-                            <p className="font-bold">Teknik Komputer Dan Jaringan</p>
-                            <p>SMK Negeri 3 Palu</p>
-                            <p>2014 - 2016</p>
-                        </div>
-                    </div>
-                    <div className="flex flex-col gap-4">
-                        <h3 className="text-2xl font-bold">Keahlian</h3>
-                        <div className="grid grid-cols-3 gap-2">
-                            <p>Javascript</p>
-                            <p>PHP</p>
-                            <p>CSS</p>
-                            <p>React JS / TS</p>
-                            <p>Tailwind</p>
-                            <p>Bootstrap</p>
-                            <p>Laravel</p>
-                            <p>CodeIgniter</p>
-                            <p>MySQL</p>
-                            <p>Version Control : (Github & Gitlab)</p>
-                            <p>AWS Service : (Cognito, Lambda, S3, DynamoDB, Amplify)</p>
-                            <p>Agile & Scrum : (Jira, Trello, Clickup)</p>
-                        </div>
-                    </div>
-                </div>
-                <div className="flex flex-col gap-4">
-                    <div className="flex flex-col gap-4 items-center">
-                        <h3 className="text-5xl font-bold ">Muh Fariza</h3>
-                        <p className="text-3xl">Software Engineer</p>
-                        <div className="bg-current h-1 w-full"></div>
-                    </div>
-                    <div className="flex flex-col gap-4 mt-8">
-                        <h3 className="text-2xl font-bold">Tentang Saya</h3>
-                        <p>Software Engineer yang memiliki passion dalam merancang website yang interaktif. Berpengalaman dalam HTML, CSS, dan JavaScript, serta berbagai framework lainnya, saya mengkhususkan diri dalam membangun situs web yang mengutamakan kemudahan penggunaan dengan keseimbangan antara estetika dan fungsi. Selalu terbuka untuk berkolaborasi dan menjelajahi inovasi teknologi terbaru. Mari bekerja sama dan menciptakan terobosan di dunia digital.</p>
-                    </div>
-                    <div className="flex flex-col gap-2">
-                        <h3 className="text-2xl font-bold">Pengalaman</h3>
-                        <p className="font-bold">Software Engineer | PT Tata Sarana Mandiri (TSM Technology)</p>
-                        <p>Software Engineer yang bersemangat dengan keahlian dalam membangun aplikasi yang tangguh menggunakan teknologi mutakhir. Berpengalaman dalam React.js, React.ts dan Golang, serta mahir memanfaatkan layanan AWS seperti DynamoDB, Lambda, Cognito, dan IoT Core untuk menciptakan solusi yang skalabel. Terampil dalam pengembangan frontend dengan Bootstrap dan Tailwind, memastikan pengalaman pengguna yang mulus.</p>
-                        <p>2022 - Sekarang</p>
-                    </div>
-                    <div className="flex flex-col gap-2">
-                        <p className="font-bold">Freelance Web Developer</p>
-                        <p>Web Developer Freelance yang kreatif, mengkhususkan diri dalam framework Laravel dan CodeIgniter. Berpengalaman dalam manajemen basis data MySQL dan mahir merancang antarmuka pengguna yang responsif dengan Bootstrap dan Blade. Berkomitmen untuk menyediakan solusi web berkualitas tinggi yang disesuaikan dengan kebutuhan klien.</p>
-                        <p>2020 - Sekarang</p>
-                    </div>
-                    <div className="flex flex-col gap-2">
-                        <p className="font-bold">Outsourcing IT Consultan | Dinas PUP ESDm Provinsi DIY</p>
-                        <p>Spesialis IT yang berdedikasi dan dipercaya untuk mengelola input data pada 41 saluran irigasi di Provinsi DIY. Berpengalaman dalam jaringan MikroTik, administrasi server DHCP, serta pengembangan web menggunakan PHP. Terampil dalam memelihara infrastruktur jaringan dan layanan web yang penting untuk operasional departemen.</p>
-                        <p>2021 - 2022</p>
-                    </div>
-                    <div className="flex flex-col gap-2">
-                        <p className="font-bold">Intern IT Staff | Dinas Kependudukan Dan Catatan Sipil Kota Yogyakarta</p>
-                        <p>Staf IT Magang yang inovatif dan berperan penting dalam pengembangan sistem pendaftaran kartu identitas berbasis web untuk anak-anak. Berpengalaman dalam PHP dan manajemen basis data MySQL, dengan perhatian khusus pada desain yang ramah pengguna menggunakan Bootstrap. Terbiasa dalam memelihara infrastruktur jaringan untuk mendukung produksi e-KTP.</p>
-                        <p>2019</p>
-                    </div>
-                </div>
-            </div> */}
             <div className="grid grid-cols-1 gap-4">
                 <div className="grid grid-cols-1 lg:p-60 p-10">
                     <div className="grid lg:grid-cols-2 grid-cols-1 gap-6 border-2 border-primary lg:p-20 p-10 rounded-lg shadow-2xl shadow-primary">
@@ -180,8 +104,58 @@ const Home = () => {
                         <a href='https://github.com/farizasandaira98' className="text-center">And more...</a>
                     </div>
                 </div>
+                <div className="grid lg:grid-cols-2 grid-cols-1 items-center lg:pl-20 pl-10 pr-10 pt-10 lg:p-20 lg:pt-0">
+                    <div className='flex flex-col lg:text-start text-center'>
+                        <h3 className="lg:text-6xl text-3xl font-bold mb-8">Pendidikan</h3>
+                        <div className="flex flex-col gap-2 border-l-2 border-warning pl-4 mb-8">
+                            <p className="font-bold">Sarjana (S1) Teknik Informatika</p>
+                            <p>STMIK Akakom Yogyakarta (Universitas Teknologi Digital Indonesia)</p>
+                            <p>2017 - 2020</p>
+                        </div>
+                        <div className="flex flex-col gap-2 border-l-2 border-warning pl-4">
+                            <p className="font-bold">Teknik Komputer Dan Jaringan</p>
+                            <p>SMK Negeri 3 Palu</p>
+                            <p>2014 - 2016</p>
+                        </div>
+                    </div>
+                    <div className="flex justify-center">
+                        <Player
+                            loop
+                            autoplay
+                            src={animateEducation}
+                            style={{ height: '400px', width: '400px' }}
+                        />
+                    </div>
+                    <div className="flex justify-center">
+                        <Player
+                            loop
+                            autoplay
+                            src={animationWork}
+                            style={{ height: '400px', width: '400px' }}
+                        />
+                    </div>
+                    <div className='flex flex-col lg:text-end text-center mt-2'>
+                        <h3 className="lg:text-6xl text-3xl font-bold mb-8">Pekerjaan</h3>
+                        <div className="flex flex-col gap-2 border-r-2 border-info pr-4 mb-8">
+                            <p className="font-bold">Software Engineer | PT Tata Sarana Mandiri (TSM Technology)</p>
+                            <p>2022 - Sekarang</p>
+                        </div>
+                        <div className="flex flex-col gap-2 border-r-2 border-info pr-4 mb-8">
+                            <p className="font-bold">Freelance Web Developer</p>
+                            <p>2020 - Sekarang</p>
+                        </div>
+                        <div className="flex flex-col gap-2 border-r-2 border-info pr-4 mb-8">
+                            <p className="font-bold">Outsourcing IT Consultan | Dinas PUP ESDm Provinsi DIY</p>
+                            <p>2021 - 2022</p>
+                        </div>
+                        <div className="flex flex-col gap-2 border-r-2 border-info pr-4">
+                            <p className="font-bold">Intern IT Staff | Dinas Kependudukan Dan Catatan Sipil Kota Yogyakarta</p>
+                            <p>2019</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            
+
         </>
     )
 }
