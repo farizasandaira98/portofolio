@@ -61,7 +61,9 @@ const Home = () => {
             <div className="grid grid-cols-1 gap-4">
                 <div className="grid grid-cols-1 lg:p-60 p-10">
                     <div className="grid lg:grid-cols-2 grid-cols-1 gap-6 border-2 border-primary lg:p-20 p-10 rounded-lg shadow-2xl shadow-primary">
+                        <div className="flex justify-center items-center">
                         <img src="/profile.jpg" alt="Profile Image" className="rounded-full" width={200} height={200} />
+                        </div>
                         <div className="flex flex-col gap-6 justify-center items-center">
                             <h3 className="lg:text-4xl text-xl font-bold text-center text-nowrap">Hi, My Name Is Muh Fariza</h3>
                             <p className="lg:text-2xl text-md font-bold text-center text-nowrap">Software Engineer</p>
