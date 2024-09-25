@@ -1,4 +1,4 @@
-import { useMyContext } from "../libs/context";
+// import { useMyContext } from "../libs/context";
 import { Player } from '@lottiefiles/react-lottie-player';
 import { useEffect, useState } from "react";
 import { socmed } from "../libs/socmed";
@@ -8,18 +8,18 @@ import animateGo from "../assets/lottie/go.json";
 
 const Home = () => {
     // Toggle between dark and light mode
-    const { languange, setLanguange, isDark, setIsDark } = useMyContext();
+    // const { languange, setLanguange, isDark, setIsDark } = useMyContext();
 
-    const toggleDarkMode = () => {
-        setIsDark(!isDark);
-        localStorage.setItem('theme', isDark ? 'dark' : 'light');
-        document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
-    }
+    // const toggleDarkMode = () => {
+    //     setIsDark(!isDark);
+    //     localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    //     document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+    // }
 
-    const toggleLanguage = () => {
-        setLanguange(languange === 'en' ? 'id' : 'en');
-        localStorage.setItem('language', languange === 'en' ? 'id' : 'en');
-    }
+    // const toggleLanguage = () => {
+    //     setLanguange(languange === 'en' ? 'id' : 'en');
+    //     localStorage.setItem('language', languange === 'en' ? 'id' : 'en');
+    // }
 
     const [repos, setRepos] = useState<IRepo[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
@@ -135,14 +135,13 @@ const Home = () => {
                 </div>
             </div> */}
             <div className="grid grid-cols-1 gap-4">
-                <div className="grid grid-cols-1 p-60 pt-20 pb-20">
-                    <div className="grid grid-cols-2 gap-6 border-2 border-primary p-20 rounded-lg shadow-2xl shadow-primary">
+                <div className="grid grid-cols-1 lg:p-60 p-10">
+                    <div className="grid lg:grid-cols-2 grid-cols-1 gap-6 border-2 border-primary lg:p-20 p-10 rounded-lg shadow-2xl shadow-primary">
                         <img src="/profile.jpg" alt="Profile Image" className="rounded-full" width={200} height={200} />
                         <div className="flex flex-col gap-6 justify-center items-center">
-                            <h3 className="text-4xl font-bold text-center text-nowrap">Hi, My Name Is Muh Fariza</h3>
-                            <p className="text-2xl font-bold">Software Engineer</p>
-                            <div className="flex flex-row gap-8 mt-10">
-
+                            <h3 className="lg:text-4xl text-xl font-bold text-center text-nowrap">Hi, My Name Is Muh Fariza</h3>
+                            <p className="lg:text-2xl text-md font-bold text-center text-nowrap">Software Engineer</p>
+                            <div className="lg:flex lg:flex-row lg:gap-8 mt-10 grid grid-cols-3 gap-10 justify-center">
                                 {socmed.map((item, index) => (
                                     <a key={index} href={item.link} target="_blank" rel="noreferrer">
                                         <Player
@@ -158,8 +157,8 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
-                <h3 className="text-2xl font-bold text-center">My Personal Projects</h3>
-                <div className="grid grid-cols-3 gap-6 p-20 pt-2">
+                <h3 className="text-2xl font-bold text-center mb-2">My Personal Projects</h3>
+                <div className="grid lg:grid-cols-3 grid-cols-1 lg:gap-6 lg:p-60 lg:pt-8 pr-10 pl-10 gap-4">
                     {repos.map((repo) => (
                         <a href={repo.html_url} target="_blank" rel="noopener noreferrer" className="flex flex-row gap-4 bg-current rounded-lg shadow-lg p-4 hover:transform hover:scale-105 transition duration-300 hover:shadow-primary">
                             <div className="flex justify-center items-center">
@@ -177,8 +176,12 @@ const Home = () => {
                             </div>
                         </a>
                     ))}
+                    <div className="lg:col-span-3 flex flex-col justify-center">
+                        <a href='https://github.com/farizasandaira98' className="text-center">And more...</a>
+                    </div>
                 </div>
             </div>
+            
         </>
     )
 }

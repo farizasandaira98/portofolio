@@ -3,6 +3,8 @@ import animationWhatsapp from '../assets/lottie/whatsapp2.json';
 import animationInstagram from '../assets/lottie/instagram2.json';
 import animationEmail from '../assets/lottie/email.json';
 import animationLinkedin from '../assets/lottie/linkedin.json';
+import animationGithub from '../assets/lottie/github.json';
+
 import { ISocmed } from '../models/Socmed';
 
 export const socmed: ISocmed[] = [
@@ -25,5 +27,9 @@ export const socmed: ISocmed[] = [
     {
         link: 'https://www.linkedin.com/in/muh-fariza',
         icon: animationLinkedin
+    },
+    {
+        link: 'https://github.com/farizasandaira98',
+        icon: animationGithub
     }
 ];
