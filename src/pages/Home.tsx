@@ -2,18 +2,21 @@ import { useMyContext } from "../libs/context";
 import { Player } from '@lottiefiles/react-lottie-player';
 import { useEffect, useState } from "react";
 import { socmed } from "../libs/socmed";
+import { skills } from "../libs/skills";
 import { IRepo } from "../models/Repos";
 import axios from "axios";
 import animateGo from "../assets/lottie/go.json";
 import animatePlanet from "../assets/lottie/planet.json";
 import animateEducation from "../assets/lottie/user-interface.json";
-import animationWork from "../assets/lottie/working-chart.json"
-import animationSun from "../assets/lottie/Sun.json"
-import animationSunset from "../assets/lottie/Sunset.json"
+import animationWork from "../assets/lottie/working-chart.json";
+import animationSun from "../assets/lottie/Sun.json";
+import animationSunset from "../assets/lottie/Sunset.json";
+import flagIndo from "../assets/icons/flag-ind.svg";
+import flagAmerica from "../assets/icons/flag-america.svg"
 
 const Home = () => {
     // Toggle between dark and light mode
-    const { isDark, setIsDark } = useMyContext();
+    const { isDark, setIsDark, languange, setLanguange } = useMyContext();
 
     const toggleDarkMode = () => {
         setIsDark(!isDark);
@@ -21,10 +24,10 @@ const Home = () => {
         document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
     }
 
-    // const toggleLanguage = () => {
-    //     setLanguange(languange === 'en' ? 'id' : 'en');
-    //     localStorage.setItem('language', languange === 'en' ? 'id' : 'en');
-    // }
+    const toggleLanguage = () => {
+        setLanguange(languange === 'en' ? 'id' : 'en');
+        localStorage.setItem('language', languange === 'en' ? 'id' : 'en');
+    }
 
     const [repos, setRepos] = useState<IRepo[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
@@ -61,8 +64,8 @@ const Home = () => {
     return (
         <>
             <div className="grid grid-cols-1 gap-4">
-                <div className="grid grid-cols-1 lg:p-60 p-10">
-                    <div className="flex flex-col items-end mb-4">
+                <div className="grid grid-cols-1 lg:p-60 lg:pt-20 p-10">
+                    <div className="flex flex-row items-end justify-end mb-4 gap-4">
                         <button className="bg-white dark:bg-slate-200 rounded-full " onClick={toggleDarkMode}>
                             <Player
                                 src={isDark ? animationSunset : animationSun}
@@ -71,13 +74,16 @@ const Home = () => {
                                 style={{ height: '50px', width: '50px' }}
                             />
                         </button>
+                        <button className="bg-white dark:bg-slate-200 rounded-full " onClick={toggleLanguage}>
+                            <img src={languange === 'en' ? flagAmerica : flagIndo} alt="Bendera" width={50} height={50} className="rounded-full p-1" />
+                        </button>
                     </div>
                     <div className="grid lg:grid-cols-2 grid-cols-1 gap-6 border-2 border-primary lg:p-20 p-10 rounded-lg shadow-2xl shadow-primary">
                         <div className="flex lg:justify-start justify-center items-center">
                             <img src="/profile.jpg" alt="Profile Image" className="rounded-full" width={200} height={200} />
                         </div>
                         <div className="flex flex-col gap-6 justify-center items-center">
-                            <h3 className="lg:text-4xl text-xl font-bold text-center text-nowrap">Hi, My Name Is Muh Fariza</h3>
+                            <h3 className="lg:text-4xl text-xl font-bold text-center text-nowrap">{languange === 'en' ? "Hi, My Name Is Muh Fariza" : "Hi, Nama Saya Muh Fariza"}</h3>
                             <p className="lg:text-2xl text-md font-bold text-center text-nowrap">Software Engineer</p>
                             <div className="lg:flex lg:flex-row lg:gap-8 mt-10 grid grid-cols-3 gap-10 justify-center">
                                 {socmed.map((item, index) => (
@@ -95,7 +101,7 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
-                <h3 className="text-2xl font-bold text-center mb-2">My Personal Projects</h3>
+                <h3 className="text-2xl font-bold text-center mb-2">{languange === 'en' ? "My Personal Projects" : "Proyek Pribadi Saya"}</h3>
                 <div className="grid lg:grid-cols-3 grid-cols-1 lg:gap-6 lg:p-60 lg:pt-8 pr-10 pl-10 gap-4">
                     {repos.map((repo) => (
                         <a href={repo.html_url} target="_blank" rel="noopener noreferrer" className="flex flex-row gap-4 bg-white dark:bg-slate-200 rounded-lg shadow-lg p-4 hover:transform hover:scale-105 transition duration-300 hover:shadow-primary">
@@ -120,15 +126,15 @@ const Home = () => {
                 </div>
                 <div className="grid lg:grid-cols-2 grid-cols-1 items-center lg:pl-20 pl-10 pr-10 pt-10 lg:p-20 lg:pt-0">
                     <div className='flex flex-col lg:text-start text-center'>
-                        <h3 className="lg:text-6xl text-3xl font-bold mb-8">Pendidikan</h3>
+                        <h3 className="lg:text-6xl text-3xl font-bold mb-8">{languange === 'en' ? "Education" : "Pendidikan"}</h3>
                         <div className="flex flex-col gap-2 border-l-2 border-warning pl-4 mb-8">
-                            <p className="font-bold">Sarjana (S1) Teknik Informatika</p>
-                            <p>STMIK Akakom Yogyakarta (Universitas Teknologi Digital Indonesia)</p>
+                            <p className="font-bold">{languange === 'en' ? "Bachelor of Computer Science" : "Sarjana (S1) Teknik Informatika"}</p>
+                            <p>{languange === 'en' ? "STMIK Akakom Yogyakarta (University of Technology And Digital Indoensia)" : "STMIK Akakom Yogyakarta (Universitas Teknologi Digital Indonesia"}</p>
                             <p>2017 - 2020</p>
                         </div>
                         <div className="flex flex-col gap-2 border-l-2 border-warning pl-4">
-                            <p className="font-bold">Teknik Komputer Dan Jaringan</p>
-                            <p>SMK Negeri 3 Palu</p>
+                            <p className="font-bold">{languange === 'en' ? "Computer And Network" : "Teknik Komputer Dan Jaringan"}</p>
+                            <p>{languange === 'en' ? "Vocational High School State 3 Palu" : "SMK Negeri 3 Palu"}</p>
                             <p>2014 - 2016</p>
                         </div>
                     </div>
@@ -149,27 +155,36 @@ const Home = () => {
                         />
                     </div>
                     <div className='flex flex-col lg:text-end text-center mt-2'>
-                        <h3 className="lg:text-6xl text-3xl font-bold mb-8">Pekerjaan</h3>
+                        <h3 className="lg:text-6xl text-3xl font-bold mb-8">{languange === 'en' ? "Work Experience" : "Pengalaman Kerja"}</h3>
                         <div className="flex flex-col gap-2 border-r-2 border-info pr-4 mb-8">
                             <p className="font-bold">Software Engineer | PT Tata Sarana Mandiri (TSM Technology)</p>
-                            <p>2022 - Sekarang</p>
+                            <p>{languange === 'en' ? "2022 - Now" : "2022 - Sekarang"}</p>
                         </div>
                         <div className="flex flex-col gap-2 border-r-2 border-info pr-4 mb-8">
                             <p className="font-bold">Freelance Web Developer</p>
-                            <p>2020 - Sekarang</p>
+                            <p>{languange === 'en' ? "2020 - Now" : "2020 - Sekarang"}</p>
                         </div>
                         <div className="flex flex-col gap-2 border-r-2 border-info pr-4 mb-8">
-                            <p className="font-bold">Outsourcing IT Consultan | Dinas PUP ESDm Provinsi DIY</p>
+                            <p className="font-bold">{languange === 'en' ? "Outsourcing IT Consultan | Public Works, Housing and Energy Office of Mineral Resources of the Special Region of Yogyakarta" : "Outsourcing IT Konsultan | Dinas Pekerjaan Umum, Perumahan dan Energi Sumber Daya Mineral Daerah Istimewa Yogyakarta"}</p>
                             <p>2021 - 2022</p>
                         </div>
                         <div className="flex flex-col gap-2 border-r-2 border-info pr-4">
-                            <p className="font-bold">Intern IT Staff | Dinas Kependudukan Dan Catatan Sipil Kota Yogyakarta</p>
+                            <p className="font-bold">{languange === 'en' ? "(Internship) IT Staff | Yogyakarta City Population and Civil Registration Office" : "(Magang) Staff IT | Dinas Kependudukan Dan Catatan Sipil Kota Yogyakarta"}</p>
                             <p>2019</p>
                         </div>
                     </div>
                 </div>
+                <div className="grid grid-cols-1 lg:p-20 p-8">
+                <h3 className="text-3xl font-bold mb-8 mt-8 text-center">{languange === 'en' ? "My Skills" : "Kemampuan Saya"}</h3>
+                <div className="flex flex-col items-center border-4 rounded-lg shadow-2xl shadow-primary">
+                    <div className="grid lg:grid-cols-11 grid-cols-3 gap-10 lg:p-20 lg:pt-8 lg:pb-8 p-8">
+                        {skills.map((item, index) => (
+                            <img key={index} src={item.image} alt={item.alt} className="col-span-1 hover:scale-125 duration-300" height={50} width={50} />
+                        ))}
+                    </div>
+                </div>
+                </div>
             </div>
-
         </>
     )
 }
