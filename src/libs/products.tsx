@@ -1,10 +1,9 @@
-// import logoTSM from '../assets/products/tsm.png';
 import logoVinilon from '../assets/products/vinilon.svg';
-// import logoHija from '../assets/products/hija.png';
 import logoNgalir from '../assets/products/ngalir.svg';
 import logoRpayku from '../assets/products/rpayku.svg';
 import logoNgisi from '../assets/products/ngisi.svg';
 import logoTMS from '../assets/products/tms.png';
+import logoHija from '../assets/products/hija.svg';
 import { ISkills } from '../models/Skills';
 
 export const products: ISkills[] = [
@@ -28,4 +27,8 @@ export const products: ISkills[] = [
         alt: 'TMS',
         image: logoTMS
     },
+    {
+        alt: 'Hija',
+        image: logoHija
+    }
 ]
